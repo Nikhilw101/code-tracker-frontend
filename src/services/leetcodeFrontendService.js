@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://code-tracker-backend-wuni.onrender.com/api';
 
 export const leetcodeAPI = {
     // Get user stats (total solved, easy/medium/hard)
