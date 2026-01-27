@@ -1,0 +1,92 @@
+.stats-card {
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 24px;
+    border: 2px solid var(--border-color);
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    transition: all 0.3s ease;
+    animation: slideIn 0.5s ease;
+}
+
+.stats-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.stats-card.success {
+    border-color: var(--success-color);
+}
+
+.stats-card.primary {
+    border-color: var(--primary-color);
+}
+
+.stats-card.warning {
+    border-color: var(--warning-color);
+}
+
+.stats-card.info {
+    border-color: var(--info-color);
+}
+
+.stats-icon {
+    font-size: 32px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.stats-content {
+    flex: 1;
+}
+
+.stats-content h3 {
+    font-size: 14px;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stats-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+}
+
+.stats-total {
+    font-size: 18px;
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+.stats-progress-bar {
+    height: 6px;
+    background: var(--bg-tertiary);
+    border-radius: 999px;
+    margin-top: 12px;
+    overflow: hidden;
+}
+
+.stats-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-light) 100%);
+    border-radius: 999px;
+    transition: width 0.5s ease;
+}
+
+.stats-card.success .stats-progress-fill {
+    background: linear-gradient(90deg, var(--success-color) 0%, #34d399 100%);
+}
+
+.stats-card.warning .stats-progress-fill {
+    background: linear-gradient(90deg, var(--warning-color) 0%, #fbbf24 100%);
+}
+
+.stats-card.info .stats-progress-fill {
+    background: linear-gradient(90deg, var(--info-color) 0%, #60a5fa 100%);
+}

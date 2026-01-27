@@ -1,0 +1,284 @@
+.problem-card {
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 20px;
+    border: 2px solid var(--border-color);
+    transition: all 0.3s ease;
+    animation: fadeIn 0.5s ease;
+}
+
+.problem-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateX(4px);
+}
+
+.problem-card.status-done {
+    border-color: var(--success-color);
+    opacity: 0.8;
+}
+
+.problem-card.status-progress {
+    border-color: var(--warning-color);
+}
+
+.problem-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.problem-info {
+    flex: 1;
+}
+
+.problem-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.problem-title a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.problem-title a:hover {
+    color: var(--primary-light);
+}
+
+.problem-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.difficulty-badge,
+.category-badge {
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.difficulty-easy {
+    background: rgba(16, 185, 129, 0.2);
+    color: var(--easy-color);
+    border: 1px solid var(--easy-color);
+}
+
+.difficulty-medium {
+    background: rgba(245, 158, 11, 0.2);
+    color: var(--medium-color);
+    border: 1px solid var(--medium-color);
+}
+
+.difficulty-hard {
+    background: rgba(239, 68, 68, 0.2);
+    color: var(--hard-color);
+    border: 1px solid var(--hard-color);
+}
+
+.category-badge {
+    background: rgba(99, 102, 241, 0.2);
+    color: var(--primary-light);
+    border: 1px solid var(--primary-color);
+}
+
+.completion-date {
+    font-size: 12px;
+    color: var(--success-color);
+    font-weight: 500;
+}
+
+.problem-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.status-select {
+    padding: 8px 12px;
+    background: var(--bg-tertiary);
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.status-select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.btn-details {
+    padding: 8px 12px;
+    background: var(--bg-tertiary);
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.btn-details:hover {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.problem-details {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    animation: fadeIn 0.3s ease;
+}
+
+.detail-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.detail-row label {
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.priority-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.priority-btn {
+    padding: 6px 16px;
+    background: var(--bg-tertiary);
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    text-transform: capitalize;
+    transition: all 0.3s ease;
+}
+
+.priority-btn:hover {
+    border-color: var(--primary-color);
+}
+
+.priority-btn.active {
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.time-input-group {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.time-input-group input {
+    flex: 1;
+    max-width: 150px;
+    padding: 8px 12px;
+    background: var(--bg-tertiary);
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    font-size: 14px;
+}
+
+.time-input-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.detail-row textarea {
+    padding: 12px;
+    background: var(--bg-tertiary);
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 14px;
+    font-family: inherit;
+    resize: vertical;
+}
+
+.detail-row textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.btn-save {
+    align-self: flex-start;
+    padding: 8px 20px;
+    background: var(--primary-color);
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-save:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .problem-main {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .problem-info {
+        width: 100%;
+    }
+
+    .problem-actions {
+        width: 100%;
+        justify-content: space-between;
+        gap: 16px;
+    }
+
+    .status-select {
+        flex: 1;
+        height: 48px;
+        /* Larger touch target */
+        font-size: 16px;
+    }
+
+    .btn-details {
+        height: 48px;
+        width: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .priority-buttons button {
+        padding: 10px 16px;
+        flex: 1;
+        justify-content: center;
+    }
+
+    .problem-card {
+        padding: 20px 16px;
+        margin-bottom: 16px;
+    }
+}
