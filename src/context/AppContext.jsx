@@ -18,13 +18,29 @@ export const AppProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState(null);
     const [userProgress, setUserProgress] = useState({});
     const [dailyGoal, setDailyGoal] = useState(4);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true); // Start loading true
     const { showNotification, requestPermission } = useNotification();
 
-    // Load session on mount (if we implemented JWT/Token, we'd check that here)
-    // For now, we rely on basic state persistence via re-login or potentially sessionStorage?
-    // The user requested "completely remove localstorage", so we won't persist login between refreshes
-    // unless we use a cookie or sessionStorage. I'll stick to simple state for this iteration as requested.
+    // Load session on mount
+    useEffect(() => {
+        const storedUser = localStorage.getItem('leetcode_tracker_user');
+        if (storedUser) {
+            try {
+                const parsedUser = JSON.parse(storedUser);
+                if (parsedUser.userId) {
+                    setCurrentUserId(parsedUser.userId);
+                    // We can also store the full user object or fetch it
+                    // For now, let's restore basic info if available, then fetch fresh
+                    setCurrentUser(parsedUser);
+                    fetchUserData(parsedUser.userId); // Fetch fresh data in background
+                }
+            } catch (e) {
+                console.error('Failed to parse stored session');
+                localStorage.removeItem('leetcode_tracker_user');
+            }
+        }
+        setLoading(false);
+    }, []);
 
     // Fetch User Data
     const fetchUserData = async (userId) => {
@@ -35,8 +51,12 @@ export const AppProvider = ({ children }) => {
             if (data.success) {
                 const { username, email, leetcodeUsername, dailyGoal, preferences, progress } = data.data;
 
-                setCurrentUser({ username, email, leetcodeUsername, preferences });
+                const updatedUser = { username, email, leetcodeUsername, preferences, userId };
+                setCurrentUser(updatedUser);
                 setDailyGoal(dailyGoal || 4);
+
+                // Update local storage with fresh data
+                localStorage.setItem('leetcode_tracker_user', JSON.stringify(updatedUser));
 
                 // Convert array progress to object map for frontend easy access
                 const progressMap = {};
@@ -44,12 +64,6 @@ export const AppProvider = ({ children }) => {
                     progressMap[p.problemId] = p;
                 });
                 setUserProgress(progressMap);
-
-                // Initialize missing problems as 'todo'
-                // Actually, the backend progress only stores valid entries. 
-                // We should merge with static problems data to ensure UI consistency if needed,
-                // but the UI checks `userProgress[id]`. If undefined, it treats as empty.
-                // We can fill gaps here if strict equality is needed.
             }
         } catch (error) {
             console.error('Failed to fetch user data:', error);
@@ -70,9 +84,14 @@ export const AppProvider = ({ children }) => {
 
             if (data.success) {
                 // Auto login
+                const user = { userId: data.userId, username: data.username, email: data.email };
                 setCurrentUserId(data.userId);
-                setCurrentUser({ username: data.username, email: data.email });
+                setCurrentUser(user);
                 setUserProgress({});
+
+                // Persist
+                localStorage.setItem('leetcode_tracker_user', JSON.stringify(user));
+
                 return { success: true, message: 'Signup successful' };
             } else {
                 return { success: false, message: data.message };
@@ -95,12 +114,18 @@ export const AppProvider = ({ children }) => {
             const data = await response.json();
 
             if (data.success) {
-                setCurrentUserId(data.userId);
-                setCurrentUser({
+                const user = {
+                    userId: data.userId,
                     username: data.username,
                     email: data.email,
                     preferences: data.preferences
-                });
+                };
+                setCurrentUserId(data.userId);
+                setCurrentUser(user);
+
+                // Persist
+                localStorage.setItem('leetcode_tracker_user', JSON.stringify(user));
+
                 await fetchUserData(data.userId);
                 return { success: true, message: 'Login successful' };
             } else {
@@ -117,6 +142,7 @@ export const AppProvider = ({ children }) => {
         setCurrentUserId(null);
         setCurrentUser(null);
         setUserProgress({});
+        localStorage.removeItem('leetcode_tracker_user');
     };
 
     // Update problem progress
