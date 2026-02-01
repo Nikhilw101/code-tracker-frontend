@@ -10,12 +10,12 @@
 
 .daily-goal-card.complete {
     border-color: var(--success-color);
-    background: linear-gradient(to bottom right, #ffffff, #f0fdf4);
+    background: linear-gradient(to bottom right, var(--bg-secondary), #f0fdf4);
 }
 
 .daily-goal-card.warning {
     border-color: var(--warning-color);
-    background: linear-gradient(to bottom right, #ffffff, #fffbeb);
+    background: linear-gradient(to bottom right, var(--bg-secondary), #fffbeb);
 }
 
 .daily-goal-header {

@@ -5,30 +5,36 @@
 }
 
 :root {
-  --primary-color: #0f172a; /* Onyx Black */
+  --primary-color: #0f172a;
+  /* Onyx Black */
   --primary-dark: #000000;
   --primary-light: #334155;
-  --accent-color: #6366f1; /* Indigo for highlights */
+  --accent-color: #6366f1;
+  /* Indigo for highlights */
   --success-color: #10b981;
   --warning-color: #f59e0b;
   --danger-color: #ef4444;
   --info-color: #3b82f6;
 
-  --bg-primary: #f8fafc; /* Frost White */
-  --bg-secondary: #ffffff;
-  --bg-tertiary: #f1f5f9;
+  --bg-primary: #e2e8f0;
+  /* Soft Slate Gray */
+  --bg-secondary: #f1f5f9;
+  /* Light Slate Blue */
+  --bg-tertiary: #cbd5e1;
+  /* Muted Slate */
 
-  --text-primary: #0f172a; /* Onyx Black */
-  --text-secondary: #475569;
-  --text-muted: #94a3b8;
+  --text-primary: #0f172a;
+  /* Onyx Black */
+  --text-secondary: #334155;
+  --text-muted: #64748b;
 
-  --border-color: #e2e8f0;
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --border-color: #94a3b8;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
 
-  --easy-color: #10b981;
-  --medium-color: #f59e0b;
-  --hard-color: #ef4444;
+  --easy-color: #059669;
+  --medium-color: #d97706;
+  --hard-color: #dc2626;
 }
 
 body {
