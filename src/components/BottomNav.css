@@ -34,7 +34,7 @@
 }
 
 .nav-item.active {
-    color: var(--primary-color);
+    color: var(--accent-color);
     background: rgba(99, 102, 241, 0.1);
 }
 
@@ -45,5 +45,7 @@
 @media (max-width: 768px) {
     .bottom-nav {
         display: flex;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(10px);
     }
 }

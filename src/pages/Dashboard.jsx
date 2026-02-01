@@ -61,6 +61,7 @@ const Dashboard = () => {
                 <StatsCard
                     title="Today's Progress"
                     value={stats.todayCompleted}
+                    total={stats.dailyGoal}
                     icon="🔥"
                     color="primary"
                 />

@@ -5,25 +5,26 @@
 }
 
 :root {
-  --primary-color: #6366f1;
-  --primary-dark: #4f46e5;
-  --primary-light: #818cf8;
+  --primary-color: #0f172a; /* Onyx Black */
+  --primary-dark: #000000;
+  --primary-light: #334155;
+  --accent-color: #6366f1; /* Indigo for highlights */
   --success-color: #10b981;
   --warning-color: #f59e0b;
   --danger-color: #ef4444;
   --info-color: #3b82f6;
 
-  --bg-primary: #0f172a;
-  --bg-secondary: #1e293b;
-  --bg-tertiary: #334155;
+  --bg-primary: #f8fafc; /* Frost White */
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f1f5f9;
 
-  --text-primary: #f1f5f9;
-  --text-secondary: #cbd5e1;
+  --text-primary: #0f172a; /* Onyx Black */
+  --text-secondary: #475569;
   --text-muted: #94a3b8;
 
-  --border-color: #334155;
-  --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.5);
+  --border-color: #e2e8f0;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 
   --easy-color: #10b981;
   --medium-color: #f59e0b;
@@ -35,7 +36,7 @@ body {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  background: var(--bg-primary);
   color: var(--text-primary);
   min-height: 100vh;
 }

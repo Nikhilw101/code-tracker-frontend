@@ -2,6 +2,7 @@ import { createContext, useContext, useState, useEffect } from 'react';
 import { useNotification } from '../hooks/useLocalStorage'; // Keeping notification hook for now if generic, or check unique usage
 import { problemsData } from '../data/problems';
 import { API_BASE_URL } from '../config';
+import { getTodayDateString } from '../utils/helpers';
 
 const AppContext = createContext();
 
@@ -225,12 +226,13 @@ export const AppProvider = ({ children }) => {
         let todo = 0;
         let todayCompleted = 0;
 
+        const todayStr = getTodayDateString();
         Object.values(problemsData).flat().forEach(p => {
             total++;
             const progress = userProgress[p.id];
             if (progress?.status === 'done') {
                 completed++;
-                if (progress.dateCompleted && isToday(new Date(progress.dateCompleted))) {
+                if (progress.dateCompleted === todayStr) {
                     todayCompleted++;
                 }
             } else if (progress?.status === 'inProgress') {
