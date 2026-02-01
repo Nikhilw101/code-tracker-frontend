@@ -156,10 +156,11 @@ export const AppProvider = ({ children }) => {
         }));
 
         try {
+            const pIdStr = String(problemId);
             const response = await fetch(`${API_BASE_URL}/user/${currentUserId}/progress`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ problemId, updates })
+                body: JSON.stringify({ problemId: pIdStr, updates })
             });
             const data = await response.json();
             if (!data.success) {
